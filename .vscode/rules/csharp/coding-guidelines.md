@@ -2,26 +2,28 @@
 description: This file provides guidelines for writing clean, maintainable, and idiomatic C# code with a focus on functional patterns and proper abstraction.
 globs: *.cs
 ---
-# Role Definition:
+# Role Definition
 
 - C# Language Expert
 - Software Architect
 - Code Quality Specialist
 
-## General:
+## General
 
 **Description:**
 C# code should be written to maximize readability, maintainability, and correctness while minimizing complexity and coupling. Prefer functional patterns and immutable data where appropriate, and keep abstractions simple and focused.
 
 **Requirements:**
+
 - Write clear, self-documenting code
 - Keep abstractions simple and focused
 - Minimize dependencies and coupling
 - Use modern C# features appropriately
 
-## Code Organization:
+## Code Organization
 
 - Use meaningful names:
+
     ```csharp
     // Good: Clear intent
     public async Task<Result<Order>> ProcessOrderAsync(OrderRequest request, CancellationToken cancellationToken)
@@ -29,7 +31,9 @@ C# code should be written to maximize readability, maintainability, and correctn
     // Avoid: Unclear abbreviations
     public async Task<Result<T>> ProcAsync<T>(ReqDto r, CancellationToken ct)
     ```
+
 - Separate state from behavior:
+
     ```csharp
     // Good: Behavior separate from state
     public sealed record Order(OrderId Id, List<OrderLine> Lines);
@@ -40,7 +44,9 @@ C# code should be written to maximize readability, maintainability, and correctn
             order.Lines.Sum(line => line.Price * line.Quantity);
     }
     ```
+
 - Prefer pure methods:
+
     ```csharp
     // Good: Pure function
     public static decimal CalculateTotalPrice(
@@ -55,7 +61,9 @@ C# code should be written to maximize readability, maintainability, and correctn
         this.UpdateDatabase();
     }
     ```
+
 - Use extension methods appropriately:
+
     ```csharp
     // Good: Extension method for domain-specific operations
     public static class OrderExtensions
@@ -64,7 +72,9 @@ C# code should be written to maximize readability, maintainability, and correctn
             order.Lines.All(line => inventory.HasStock(line.ProductId, line.Quantity));
     }
     ```
+
 - Design for testability:
+
     ```csharp
     // Good: Easy to test pure functions
     public static class PriceCalculator
@@ -85,9 +95,10 @@ C# code should be written to maximize readability, maintainability, and correctn
     }
     ```
 
-## Dependency Management:
+## Dependency Management
 
 - Minimize constructor injection:
+
     ```csharp
     // Good: Minimal dependencies
     public sealed class OrderProcessor(IOrderRepository repository)
@@ -107,10 +118,18 @@ C# code should be written to maximize readability, maintainability, and correctn
         // Implementation
     }
     ```
+
 - Prefer composition with interfaces:
+
     ```csharp
     // Good: Composition with interfaces
     public sealed class EnhancedLogger(ILogger baseLogger, IMetrics metrics) : ILogger
     {
     }
     ```
+
+## For Entity Framework
+
+- Use code first approach
+- Do not use records for model classes. create POCO instead
+- Use fluent api for configuration

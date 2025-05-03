@@ -3,9 +3,12 @@ description: This file provides guidelines for writing clean, maintainable, and 
 globs: *.cs
 ---
 
-## Type Definitions:
+# Coding Style
+
+## Type Definitions
 
 - Prefer records for data types:
+
     ```csharp
     // Good: Immutable data type with value semantics
     public sealed record CustomerDto(string Name, Email Email);
@@ -17,7 +20,9 @@ globs: *.cs
         public string Email { get; set; }
     }
     ```
+
 - Make classes sealed by default:
+
     ```csharp
     // Good: Make classes sealed by default
     public sealed class OrderProcessor
@@ -32,9 +37,10 @@ globs: *.cs
     }
     ```
 
-## Variable Declarations:
+## Variable Declarations
 
 - Use var where possible:
+
     ```csharp
     // Good: Using var for type inference
     var fruit = "Apple";
@@ -42,9 +48,10 @@ globs: *.cs
     var order = new Order(fruit, number);
     ```
 
-## Control Flow:
+## Control Flow
 
 - Prefer range indexers over LINQ:
+
     ```csharp
     // Good: Using range indexers with clear comments
     var lastItem = items[^1];  // ^1 means "1 from the end"
@@ -56,7 +63,9 @@ globs: *.cs
     var firstThree = items.Take(3).ToList();
     var slice = items.Skip(2).Take(3).ToList();
     ```
+
 - Prefer collection initializers:
+
     ```csharp
     // Good: Using collection initializers
     string[] fruits = ["Apple", "Banana", "Cherry"];
@@ -68,7 +77,9 @@ globs: *.cs
         "Cherry"
     };
     ```
+
 - Use pattern matching effectively:
+
     ```csharp
     // Good: Clear pattern matching
     public decimal CalculateDiscount(Customer customer) =>
@@ -90,9 +101,10 @@ globs: *.cs
     }
     ```
 
-## Nullability:
+## Nullability
 
 - Mark nullable fields explicitly:
+
     ```csharp
     // Good: Explicit nullability
     public class OrderProcessor
@@ -113,7 +125,9 @@ globs: *.cs
         private string _lastError; // Warning: Could be null
     }
     ```
+
 - Use null checks only when necessary for reference types and public methods:
+
     ```csharp
     // Good: Proper null checking
     public void ProcessOrder(Order order)
@@ -143,7 +157,9 @@ globs: *.cs
         ArgumentNullException.ThrowIfNull(order); // DON'T USE, ProcessOrder is private
     }
     ```
+
 - Use null-forgiving operator when appropriate:
+
     ```csharp
     public class OrderValidator
     {
@@ -161,7 +177,9 @@ globs: *.cs
         }
     }
     ```
+
 - Use nullability attributes:
+
     ```csharp
     public class StringUtilities
     {
@@ -187,7 +205,9 @@ globs: *.cs
         }
     }
     ```
+
 - Use init-only properties with non-null validation:
+
     ```csharp
     // Good: Non-null validation in constructor
     public sealed record Order
@@ -211,7 +231,9 @@ globs: *.cs
             new(id, lines.ToImmutableList());
     }
     ```
+
 - Document nullability in interfaces:
+
     ```csharp
     public interface IOrderRepository
     {
@@ -227,9 +249,10 @@ globs: *.cs
     }
     ```
 
-## Safe Operations:
+## Safe Operations
 
 - Use Try methods for safer operations:
+
     ```csharp
     // Good: Using TryGetValue for dictionary access
     if (dictionary.TryGetValue(key, out var value))
@@ -241,6 +264,7 @@ globs: *.cs
         // Handle missing key case
     }
     ```
+
     ```csharp
     // Avoid: Direct indexing which can throw
     var value = dictionary[key];  // Throws if key doesn't exist
@@ -255,6 +279,7 @@ globs: *.cs
         // Handle invalid URL case
     }
     ```
+
     ```csharp
     // Avoid: Direct Uri creation which can throw
     var uri = new Uri(urlString);  // Throws on invalid URL
@@ -269,6 +294,7 @@ globs: *.cs
         // Handle invalid number case
     }
     ```
+
     ```csharp
     // Good: Combining Try methods with null coalescing
     var value = dictionary.TryGetValue(key, out var result)
@@ -283,6 +309,7 @@ globs: *.cs
     ```
 
 - Prefer Try methods over exception handling:
+
     ```csharp
     // Good: Using Try method
     if (decimal.TryParse(priceString, out var price))
@@ -302,9 +329,10 @@ globs: *.cs
     }
     ```
 
-## Asynchronous Programming:
+## Asynchronous Programming
 
 - Use Task.FromResult for pre-computed values:
+
     ```csharp
     // Good: Return pre-computed value
     public Task<int> GetDefaultQuantityAsync() =>
@@ -318,7 +346,9 @@ globs: *.cs
     public Task<int> GetDefaultQuantityAsync() =>
         Task.Run(() => 1);
     ```
+
 - Always flow CancellationToken:
+
     ```csharp
     // Good: Propagate cancellation
     public async Task<Order> ProcessOrderAsync(
@@ -336,7 +366,9 @@ globs: *.cs
         return order;
     }
     ```
+
 - Prefer await:
+
     ```csharp
     // Good: Using await
     public async Task<Order> ProcessOrderAsync(OrderId id)
@@ -346,7 +378,9 @@ globs: *.cs
         return order;
     }
     ```
+
 - Never use Task.Result or Task.Wait:
+
     ```csharp
     // Good: Async all the way
     public async Task<Order> GetOrderAsync(OrderId id)
@@ -360,7 +394,9 @@ globs: *.cs
         return _repository.GetAsync(id).Result; // Can deadlock
     }
     ```
+
 - Use TaskCompletionSource correctly:
+
     ```csharp
     // Good: Using RunContinuationsAsynchronously
     private readonly TaskCompletionSource<Order> _tcs = 
@@ -369,7 +405,9 @@ globs: *.cs
     // Avoid: Default TaskCompletionSource can cause deadlocks
     private readonly TaskCompletionSource<Order> _tcs = new();
     ```
+
 - Always dispose CancellationTokenSources:
+
     ```csharp
     // Good: Proper disposal of CancellationTokenSource
     public async Task<Order> GetOrderWithTimeout(OrderId id)
@@ -378,7 +416,9 @@ globs: *.cs
         return await _repository.GetAsync(id, cts.Token);
     }
     ```
+
 - Prefer async/await over direct Task return:
+
     ```csharp
     // Good: Using async/await
     public async Task<Order> ProcessOrderAsync(OrderRequest request)
@@ -397,9 +437,10 @@ globs: *.cs
     }
     ```
 
-## Symbol References:
+## Symbol References
 
 - Always use nameof operator:
+
     ```csharp
     // Good: Using nameof in attributes
     public class OrderProcessor
@@ -422,7 +463,9 @@ globs: *.cs
         }
     }
     ```
+
 - Use nameof with exceptions:
+
     ```csharp
     public class OrderService
     {
@@ -450,7 +493,9 @@ globs: *.cs
         }
     }
     ```
+
 - Use nameof in logging:
+
     ```csharp
     public class OrderProcessor
     {
@@ -481,9 +526,10 @@ globs: *.cs
     }
     ```
 
-### Usings and Namespaces:
+### Usings and Namespaces
 
 - Use implicit usings:
+
     ```csharp
     // Good: Implicit
     namespace MyNamespace
@@ -520,7 +566,9 @@ globs: *.cs
         }
     }
     ```
+
 - Use file-scoped namespaces:
+
     ```csharp
     // Good: File-scoped namespace
     namespace MyNamespace;

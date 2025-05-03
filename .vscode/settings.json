@@ -1,6 +1,9 @@
 {
     "cSpell.words": [
+        "Antiforgery",
+        "Blazor",
         "devcontainers",
+        "HSTS",
         "mymoney"
     ],
     "chat.promptFiles": true,
