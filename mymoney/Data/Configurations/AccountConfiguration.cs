@@ -14,14 +14,8 @@ public sealed class AccountConfiguration : IEntityTypeConfiguration<Account>
             .HasMaxLength(100)
             .IsRequired();
             
-        builder.Property(a => a.Description)
-            .HasMaxLength(500);
-            
         builder.Property(a => a.Balance)
             .HasPrecision(18, 2)
-            .IsRequired();
-            
-        builder.Property(a => a.Type)
             .IsRequired();
             
         builder.Property(a => a.CreatedAt)
