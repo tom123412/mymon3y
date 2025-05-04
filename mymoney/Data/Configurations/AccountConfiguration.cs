@@ -32,5 +32,11 @@ public sealed class AccountConfiguration : IEntityTypeConfiguration<Account>
         builder.Property(a => a.IsActive)
             .IsRequired()
             .HasDefaultValue(true);
+
+        builder.HasOne(a => a.User)
+            .WithMany(u => u.Accounts)
+            .HasForeignKey(a => a.UserId)
+            .OnDelete(DeleteBehavior.Cascade)
+            .IsRequired();
     }
 }
