@@ -28,5 +28,9 @@ public sealed class AccountConfiguration : IEntityTypeConfiguration<Account>
             .WithOne(t => t.Account)
             .HasForeignKey(t => t.AccountId)
             .OnDelete(DeleteBehavior.Cascade);
+            
+        builder.Property(a => a.IsActive)
+            .IsRequired()
+            .HasDefaultValue(true);
     }
 }

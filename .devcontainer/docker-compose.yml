@@ -4,9 +4,9 @@ services:
   app:
     image: mcr.microsoft.com/devcontainers/dotnet:9.0
     volumes:
-      - ..:/workspace:cached
-    network_mode: service:db
+      - ..:/workspaces/mymon3y:cached
     command: sleep infinity
+    network_mode: service:db
 
   db:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -14,9 +14,8 @@ services:
     environment:
       SA_PASSWORD: P@ssw0rd
       ACCEPT_EULA: Y
-      MSSQL_PID: Developer
     volumes:
-      - sqlserver-data:/var/opt/mssql
-    
+      - mssql-data:/var/opt/mssql
+
 volumes:
-  sqlserver-data:
+  mssql-data:

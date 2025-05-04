@@ -2,8 +2,11 @@
     "cSpell.words": [
         "Antiforgery",
         "Blazor",
+        "csdevkit",
         "devcontainers",
+        "dotnettools",
         "HSTS",
+        "mymon",
         "mymoney"
     ],
     "chat.promptFiles": true,

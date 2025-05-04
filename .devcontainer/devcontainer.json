@@ -2,18 +2,16 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/dotnet
 {
 	"name": "C# Development",
-	"image": "mcr.microsoft.com/devcontainers/dotnet:9.0",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
-	"workspaceFolder": "/workspace",
+	"workspaceFolder": "/workspaces/mymon3y",
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
 		"ghcr.io/devcontainers/features/azure-cli:1": {},
 		"ghcr.io/devcontainers/features/node:1": {
 			"npx": true
-		},
-		"ghcr.io/devcontainers/features/dotnet:1": {}
+		}
 	},
 
 	// Configure tool-specific properties.
@@ -32,7 +30,7 @@
 	// More info: https://containers.dev/implementors/json_reference/#port-attributes
 	"portsAttributes": {
 		"5000": {
-			"label": "Hello Remote World",
+			"label": "MyMon3y Web App",
 			"onAutoForward": "notify"
 		},
 		"5001": {
@@ -45,7 +43,7 @@
 	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [1433],
+	"forwardPorts": [1433, 5000, 5001],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "dotnet tool install --global dotnet-ef"
