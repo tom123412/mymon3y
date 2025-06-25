@@ -1,2 +1,2 @@
-# mymon3y
+# myMon3y
 Vibe coding playground
