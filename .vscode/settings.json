@@ -7,8 +7,10 @@
         "devcontainers",
         "dotnettools",
         "HSTS",
+        "Mone",
         "mymon",
-        "mymoney"
+        "mymoney",
+        "onclick"
     ],
     "chat.promptFiles": true,
     "chat.promptFilesLocations": {
