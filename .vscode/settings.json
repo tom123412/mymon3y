@@ -6,11 +6,13 @@
         "csdevkit",
         "devcontainers",
         "dotnettools",
+        "gvbah",
         "HSTS",
         "Mone",
         "mymon",
         "mymoney",
-        "onclick"
+        "onclick",
+        "stylesheet"
     ],
     "chat.promptFiles": true,
     "chat.promptFilesLocations": {

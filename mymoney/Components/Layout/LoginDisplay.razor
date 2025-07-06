@@ -1,0 +1,28 @@
+@inject NavigationManager Navigation
+@inject Auth0Service Auth0
+
+<AuthorizeView>
+    <Authorized>
+        <div class="d-flex align-items-center">
+            <span class="me-3">Hello, @Auth0.UserName!</span>
+            <button type="button" class="btn btn-outline-light" @onclick="LogoutAsync">Logout</button>
+        </div>
+    </Authorized>
+    <NotAuthorized>
+        <button class="btn btn-outline-light" @onclick="LoginAsync">Login</button>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    private Task LoginAsync()
+    {
+        Navigation.NavigateTo("login", true);
+        return Task.CompletedTask;
+    }
+
+    private Task LogoutAsync()
+    {
+        Navigation.NavigateTo("logout", true);
+        return Task.CompletedTask;
+    }
+}
