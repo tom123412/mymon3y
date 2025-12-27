@@ -145,6 +145,7 @@ globs: *.cs
             { Lines: null } => throw new ArgumentException("Order lines cannot be null", nameof(order)),
             _ => order.Lines.Sum(l => l.Total)
         };
+
     // BAD: Avoid null checks for value types
     public void ProcessOrder(int orderId)
     {
@@ -187,11 +188,6 @@ globs: *.cs
         [return: NotNullIfNotNull(nameof(input))]
         public static string? ToUpperCase(string? input) =>
             input?.ToUpperInvariant();
-        
-        // Method never returns null
-        [return: NotNull]
-        public static string EnsureNotNull(string? input) =>
-            input ?? string.Empty;
         
         // Parameter must not be null when method returns true
         public static bool TryParse(string? input, [NotNullWhen(true)] out string? result)
@@ -559,11 +555,10 @@ globs: *.cs
     using Good: Explicit usings; // DON'T USE
     
     namespace MyNamespace
+
+    public class MyClass
     {
-        public class MyClass
-        {
-            // Implementation
-        }
+        // Implementation
     }
     ```
 

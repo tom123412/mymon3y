@@ -65,11 +65,14 @@ C# code should be written to maximize readability, maintainability, and correctn
 - Use extension methods appropriately:
 
     ```csharp
-    // Good: Extension method for domain-specific operations
+    // Good: Extension members for domain-specific operations
     public static class OrderExtensions
     {
-        public static bool CanBeFulfilled(this Order order, Inventory inventory) =>
-            order.Lines.All(line => inventory.HasStock(line.ProductId, line.Quantity));
+        extension(Order order)
+        {
+            public bool CanBeFulfilled(Inventory inventory) =>
+                order.Lines.All(line => inventory.HasStock(line.ProductId, line.Quantity));
+        }
     }
     ```
 
@@ -131,5 +134,5 @@ C# code should be written to maximize readability, maintainability, and correctn
 ## For Entity Framework
 
 - Use code first approach
-- Do not use records for model classes. create POCO instead
+- Use records for model classes over POCO
 - Use fluent api for configuration

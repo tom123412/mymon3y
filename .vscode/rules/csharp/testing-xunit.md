@@ -160,11 +160,11 @@ Tests should be reliable, maintainable, and provide meaningful coverage. Use xUn
 
 ## Best Practices:
 
-- Name tests clearly:
+- Name tests clearly using given when then naming:
     ```csharp
     // Good: Clear test names
     [Fact]
-    public async Task ProcessOrder_WhenInventoryAvailable_UpdatesStockAndReturnsSuccess()
+    public async Task GivenProcessOrder_WhenInventoryAvailable_ThenUpdatesStockAndReturnsSuccess()
     
     // Avoid: Unclear names
     [Fact]

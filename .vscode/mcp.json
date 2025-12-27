@@ -1,21 +1,27 @@
 {
-    "servers": {
-        "Azure MCP Server": {
-            "command": "npx",
-            "args": [
-                "-y",
-                "@azure/mcp@latest",
-                "server",
-                "start"
-            ]
-        },
-        "Context7": {
-            "type": "stdio",
-            "command": "npx",
-            "args": [
-                "-y",
-                "@upstash/context7-mcp@latest"
-            ]
-        }
-    }
+	"servers": {
+		"Azure MCP Server": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@azure/mcp@latest",
+				"server",
+				"start"
+			],
+			"type": "stdio"
+		},
+		"Context7": {
+			"type": "stdio",
+			"command": "npx",
+			"args": [
+				"-y",
+				"@upstash/context7-mcp@latest"
+			]
+		},
+		"microsoft-learn": {
+			"url": "https://learn.microsoft.com/api/mcp",
+			"type": "http"
+		}
+	},
+	"inputs": []
 }
