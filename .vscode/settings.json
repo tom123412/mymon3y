@@ -6,9 +6,15 @@
         "csdevkit",
         "devcontainers",
         "dotnettools",
+        "gvbah",
         "HSTS",
+        "Mone",
         "mymon",
-        "mymoney"
+        "mymoney",
+        "nosnippet",
+        "onclick",
+        "rendermode",
+        "stylesheet"
     ],
     "chat.promptFilesLocations": {
         ".vscode/prompts": true
