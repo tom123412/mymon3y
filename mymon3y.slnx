@@ -1,2 +1,4 @@
 <Solution>
+  <Project Path="MyMoney.Client/MyMoney.Client.csproj" />
+  <Project Path="MyMoney/MyMoney.csproj" />
 </Solution>
