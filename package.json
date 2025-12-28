@@ -1,0 +1,11 @@
+{
+  "name": "mymon3y",
+  "version": "1.0.0",
+  "description": "My Money Blazor App",
+  "scripts": {
+    "build-css": "tailwindcss -i ./MyMoney/wwwroot/app.css -o ./MyMoney/wwwroot/output.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/mymon3y.sln"
+                "${workspaceFolder}/mymon3y.slnx"
             ],
             "problemMatcher": "$msCompile"
         }
