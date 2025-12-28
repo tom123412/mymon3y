@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    image: mcr.microsoft.com/devcontainers/dotnet:9.0
+    image: mcr.microsoft.com/devcontainers/dotnet:10.0
     volumes:
       - ..:/workspaces/mymon3y:cached
     command: sleep infinity
