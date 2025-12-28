@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/mymoney/bin/Debug/net9.0/mymoney.dll",
+            "program": "${workspaceFolder}/mymoney/bin/Debug/net10.0/mymoney.dll",
             "args": [],
             "cwd": "${workspaceFolder}/mymoney",
             "stopAtEntry": false,
