@@ -7,6 +7,7 @@
 
   <Target Name="BuildCss" BeforeTargets="CoreBuild">
     <Message Text="Building CSS..." />
+    <Exec Command="npm install tailwindcss" />
     <Exec Command="npx @tailwindcss/cli@^4.1.18 -i ./MyMoney/wwwroot/app.css -o ./MyMoney/wwwroot/output.css" WorkingDirectory="$(ProjectDir).." />
   </Target>
 
