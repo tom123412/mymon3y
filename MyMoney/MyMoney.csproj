@@ -2,13 +2,14 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyMoney.Client\MyMoney.Client.csproj" />
+    <PackageReference Include="Auth0.AspNetCore.Authentication" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
   </ItemGroup>
 
-  <Target Name="BuildCss" BeforeTargets="CoreBuild">
+  <Target Name="BuildCss" BeforeTargets="CoreCompile">
     <Message Text="Building CSS..." />
     <Exec Command="npm install tailwindcss" />
-    <Exec Command="npx @tailwindcss/cli@^4.1.18 -i ./MyMoney/wwwroot/app.css -o ./MyMoney/wwwroot/output.css" WorkingDirectory="$(ProjectDir).." />
+    <Exec Command="npx --yes @tailwindcss/cli@^4.1.18 -i ./wwwroot/app.css -o ./wwwroot/output.css" />
   </Target>
 
 </Project>

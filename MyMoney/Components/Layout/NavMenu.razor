@@ -1,4 +1,5 @@
-﻿<div class="flex items-center px-3 bg-black bg-opacity-40 min-h-[3.5rem]">
+﻿@using Microsoft.AspNetCore.Components.Authorization
+<div class="flex items-center px-3 bg-black bg-opacity-40 min-h-[3.5rem]">
     <div class="container mx-auto flex justify-between items-center">
         <a class="text-lg font-semibold text-white" href="">My Mon3y</a>
         <input type="checkbox" title="Navigation menu" class="hidden md:hidden" id="nav-toggle" />
@@ -30,5 +31,22 @@
             </NavLink>
         </div>
     </nav>
+</div>
+
+<div class="px-3 text-sm pb-2">
+    <AuthorizeView>
+        <Authorized>
+            <form method="post" action="/Account/Logout">
+                <button type="submit" class="text-gray-300 bg-transparent border-none rounded h-12 flex items-center w-full leading-[3rem] hover:bg-white hover:bg-opacity-10 hover:text-white">
+                    <span class="bi bi-box-arrow-right-nav-menu" aria-hidden="true"></span> Logout
+                </button>
+            </form>
+        </Authorized>
+        <NotAuthorized>
+            <a href="/Account/Login" class="text-gray-300 bg-transparent border-none rounded h-12 flex items-center w-full leading-[3rem] hover:bg-white hover:bg-opacity-10 hover:text-white">
+                <span class="bi bi-box-arrow-in-right-nav-menu" aria-hidden="true"></span> Login
+            </a>
+        </NotAuthorized>
+    </AuthorizeView>
 </div>
 
