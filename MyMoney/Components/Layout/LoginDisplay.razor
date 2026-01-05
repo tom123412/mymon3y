@@ -1,0 +1,23 @@
+@inject NavigationManager Navigation
+
+<AuthorizeView>
+    <Authorized>
+        <span>Hello, @context.User.Identity?.Name!</span>
+        <button @onclick="Logout" class="ml-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Logout</button>
+    </Authorized>
+    <NotAuthorized>
+        <button @onclick="Login" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Login</button>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    private void Login()
+    {
+        Navigation.NavigateTo("Account/Login", forceLoad: true);
+    }
+
+    private void Logout()
+    {
+        Navigation.NavigateTo("Account/Logout", forceLoad: true);
+    }
+}

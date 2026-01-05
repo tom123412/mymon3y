@@ -18,5 +18,5 @@
     ],
     "chat.promptFilesLocations": {
         ".vscode/prompts": true
-    },
+    }
 }
