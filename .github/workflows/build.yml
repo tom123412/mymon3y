@@ -18,11 +18,18 @@ jobs:
       with:
         dotnet-version: 10.0.x
     
-    - name: Restore dependencies
-      run: dotnet restore
-    
     - name: Build
-      run: dotnet build --no-restore --configuration Release
+      run: dotnet build --configuration Release
+    
+    - name: Publish
+      run: dotnet publish MyMoney/MyMoney.csproj --configuration Release --output ./publish
+    
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v3
+      with:
+        app-name: mymoney-staging
+        publish-profile: ${{ secrets.AZURE_WEBAPP_STAGING_PUBLISH_PROFILE }}
+        package: ./publish
     
     # Uncomment when you add tests
     # - name: Test

@@ -14,7 +14,8 @@
         "nosnippet",
         "onclick",
         "rendermode",
-        "stylesheet"
+        "stylesheet",
+        "webapps"
     ],
     "chat.promptFilesLocations": {
         ".vscode/prompts": true

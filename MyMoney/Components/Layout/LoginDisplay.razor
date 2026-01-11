@@ -13,11 +13,11 @@
 @code {
     private void Login()
     {
-        Navigation.NavigateTo("Account/Login", forceLoad: true);
+        Navigation.NavigateTo("/api/account/login", forceLoad: true);
     }
 
     private void Logout()
     {
-        Navigation.NavigateTo("Account/Logout", forceLoad: true);
+        Navigation.NavigateTo("/api/account/logout", forceLoad: true);
     }
 }
