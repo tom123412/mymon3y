@@ -9,16 +9,8 @@ public static class AccountEndpoints
 {
     public static IEndpointRouteBuilder MapAccountEndpoints(this IEndpointRouteBuilder endpoints)
     {
-        var apiVersionSet = endpoints
-                .NewApiVersionSet()
-                .HasApiVersion(new ApiVersion(1))
-                .ReportApiVersions()
-                .Build()
-                ;
-
         var accountGroup = endpoints
-            .MapGroup("/api/account")
-            .WithApiVersionSet(apiVersionSet)
+            .MapGroup("/account")
             ;
 
         accountGroup.MapGet("/login", async (HttpContext httpContext, string returnUrl = "/") =>
