@@ -9,6 +9,8 @@
     <ProjectReference Include="..\MyMoney.Client\MyMoney.Client.csproj" />
     <PackageReference Include="Auth0.AspNetCore.Authentication" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
   </ItemGroup>
 
   <Target Name="BuildCss" BeforeTargets="CoreCompile">

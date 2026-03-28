@@ -2,7 +2,9 @@ using Auth0.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.EntityFrameworkCore;
 using MyMoney.Components;
+using MyMoney.Data;
 using MyMoney.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +25,9 @@ builder.Services
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents()
     ;
+
+builder.Services.AddDbContext<ExpensesDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ExpensesDatabase") ?? throw new InvalidOperationException("Connection string 'ExpensesDatabase' not found.")));
 
 builder.Services.AddRazorPages();
 

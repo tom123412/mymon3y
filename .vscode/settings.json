@@ -19,5 +19,10 @@
     ],
     "chat.promptFilesLocations": {
         ".vscode/prompts": true
+    },
+    "chat.tools.terminal.autoApprove": {
+        "dotnet build": true,
+        "ForceNoAlign": true,
+        "dotnet list": true
     }
 }
