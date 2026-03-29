@@ -25,6 +25,8 @@
         "dotnet build": true,
         "ForceNoAlign": true,
         "dotnet list": true,
-        "dotnet tool": true
+        "dotnet tool": true,
+        "dotnet ef": true,
+        "dotnet restore": true
     }
 }
