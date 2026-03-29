@@ -10,6 +10,7 @@
 
 ## Key Technologies & Patterns
 - **.NET 10.0** with nullable enabled and implicit usings
+- **File-scoped namespaces**: Use file-scoped namespace declarations (e.g., `namespace MyNamespace;`) instead of block namespaces
 - **Tailwind CSS**: Styles built via npm in `MyMoney.csproj` BuildCss target. Use utility classes directly in `.razor` files (e.g., `class="bg-blue-500 text-white px-4 py-2 rounded"` in `Counter.razor`)
 - **Authentication**: Auth0 integration via `Auth0.AspNetCore.Authentication` package. Configured in `appsettings.json`, login/logout via `/Account/Login` and `/Account/Logout`
 - **Render Modes**:
